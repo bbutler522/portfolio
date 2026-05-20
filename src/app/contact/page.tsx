@@ -22,9 +22,9 @@ export default function ContactPage() {
       <section className="shell py-14 pb-20">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <ContactCard
-            href="mailto:hello@brennanbutler.com"
+            href="mailto:bbutler522@gmail.com"
             label="Email — fastest"
-            value="hello@brennanbutler.com"
+            value="bbutler522@gmail.com"
           />
           <ContactCard
             href="https://linkedin.com/in/butlerbrennan/"
@@ -33,15 +33,9 @@ export default function ContactPage() {
             external
           />
           <ContactCard
-            href="https://instagram.com/brennanrome"
-            label="Instagram"
-            value="@brennanrome"
-            external
-          />
-          <ContactCard
-            href="https://github.com/brennanbutler"
+            href="https://github.com/bbutler522"
             label="GitHub"
-            value="brennanbutler"
+            value="bbutler522"
             external
           />
         </div>
