@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, DM_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Layout } from "@/components/Layout";
 import "./globals.css";
@@ -48,6 +49,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Layout>{children}</Layout>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
