@@ -23,6 +23,8 @@ Edit markdown files and refresh — no CMS required.
 
 Deploy to [Vercel](https://vercel.com) and point `brennanbutler.com` DNS to the new project.
 
+Analytics uses [@vercel/analytics](https://vercel.com/docs/analytics) — enable **Web Analytics** in the Vercel project dashboard after deploy; no env vars required.
+
 ```bash
 npm run build
 ```
