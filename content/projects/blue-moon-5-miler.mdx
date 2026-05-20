@@ -1,0 +1,53 @@
+---
+title: "Blue Moon 5 Miler"
+slug: "blue-moon-5-miler"
+description: "A full-stack race registration platform — Stripe payments, Supabase backend, public event site. Every layer mine."
+category: side
+featured: true
+company: "Side Project"
+role: "Sole engineer, designer, ops"
+publishedAt: "2025-01-15T00:00:00.000Z"
+coverImage: "/images/portfolio-card---blue-moon.png"
+tags:
+  - "Next.js"
+  - "Supabase"
+  - "Stripe"
+order: 1
+summary: "A full-stack race registration platform I built end-to-end — from the public event site to Stripe-backed signup to a real-time admin dashboard. Every decision mine, which is rare and revealing."
+---
+
+## The problem
+
+The Blue Moon 5 Miler is a local road race. Most small races run on off-the-shelf registration platforms that take a meaningful cut of every signup and offer a registration experience that feels like 2009 — clunky forms, jarring payment redirects, no real control over the event site.
+
+I wanted to see if I could build the whole stack myself for a single race, keep the runner experience tight, and learn a lot about payment infrastructure along the way.
+
+## What I built
+
+- **Public race site.** Fast, responsive event page with course info, results archive, and a registration CTA that doesn't get in the way.
+- **Registration flow.** Form validation, participant data capture, emergency contact, t-shirt sizing, confirmation flow.
+- **Stripe payments.** Checkout sessions, webhook verification, refunds, and dedupe for the inevitable double-submits.
+- **Supabase backend.** Postgres tables for participants with row-level security, real-time subscriptions for the admin dashboard.
+- **Admin view.** Live registrations list, CSV export, manual refund hooks, ad-hoc updates.
+
+## Technical highlights
+
+### Stripe webhook verification — done right the second time
+
+The first version trusted the Stripe redirect to confirm payment. Bad idea — a runner with a flaky connection had their card charged but their registration never recorded. I rebuilt the flow around webhook verification with idempotency keys, and the failure mode disappeared.
+
+### Supabase row-level security
+
+Participant data sits in Postgres with RLS policies that constrain reads and writes to the right contexts. The admin dashboard subscribes to real-time changes so I can watch signups roll in on race week without refreshing.
+
+### End-to-end ownership
+
+DNS, deploy pipeline, schema design, UI, copy, transactional emails, refund policy. Owning all of it at once is the part of side projects that doesn't translate to most jobs — every decision compounds, and every shortcut shows up later.
+
+## What I'd do differently
+
+I'd start with the admin dashboard instead of finishing it last. The thing I actually use most often during a race is the participant list — and building it last meant I shipped without a proper search field. Future me would have appreciated past me solving that earlier.
+
+## Takeaway
+
+Side projects are where I find out what I actually believe about engineering. At work there are good reasons to defer to existing systems; on a side project you have to choose, defend, and live with each one. This one taught me that I'd rather build payment infrastructure carefully than build it cleverly.
