@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import { getAllPosts } from "@/lib/content";
+import { writingEnabled } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Writing",
@@ -10,6 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default async function WritingPage() {
+  if (!writingEnabled) notFound();
+
   const posts = await getAllPosts();
 
   return (

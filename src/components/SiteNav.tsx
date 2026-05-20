@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { writingEnabled } from "@/lib/site-config";
 import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/writing", label: "Writing" },
+  ...(writingEnabled ? [{ href: "/writing", label: "Writing" }] : []),
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

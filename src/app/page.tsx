@@ -1,17 +1,12 @@
 import Link from "next/link";
-import { format } from "date-fns";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ProjectRow } from "@/components/ProjectRow";
-import {
-  getAllPosts,
-  getFeaturedProjects,
-  getSiteContent,
-} from "@/lib/content";
+import { getFeaturedProjects, getSiteContent } from "@/lib/content";
+import { writingEnabled } from "@/lib/site-config";
 
 export default async function HomePage() {
   const site = getSiteContent();
   const featuredProjects = await getFeaturedProjects();
-  const posts = (await getAllPosts()).slice(0, 3);
 
   return (
     <>
@@ -38,33 +33,6 @@ export default async function HomePage() {
         <ul>
           {featuredProjects.map((project) => (
             <ProjectRow key={project.slug} project={project} />
-          ))}
-        </ul>
-      </section>
-
-      <section className="shell border-t border-line-soft py-14">
-        <SectionHeader
-          eyebrow="Writing"
-          title="Notes from the build"
-          href="/writing"
-          linkLabel="All posts →"
-        />
-        <ul className="divide-y divide-line-soft">
-          {posts.map((post) => (
-            <li key={post.slug} className="py-5 first:pt-0">
-              <Link
-                href={`/writing/${post.slug}`}
-                className="group flex flex-col gap-1 md:flex-row md:items-center md:justify-between"
-              >
-                <span className="font-medium text-ink transition group-hover:text-accent">
-                  {post.title}
-                </span>
-                <span className="text-sm text-ink-mute">
-                  {format(new Date(post.publishedAt), "MMM yyyy")}
-                  {post.readingTime && ` · ${post.readingTime}`}
-                </span>
-              </Link>
-            </li>
           ))}
         </ul>
       </section>

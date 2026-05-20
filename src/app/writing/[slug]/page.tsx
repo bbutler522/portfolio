@@ -5,12 +5,14 @@ import { format } from "date-fns";
 import { getPostBySlug, getPostSlugs } from "@/lib/content";
 import { Prose } from "@/components/Prose";
 import { markdownToHtml } from "@/lib/markdown";
+import { writingEnabled } from "@/lib/site-config";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
+  if (!writingEnabled) return [];
   return getPostSlugs().map((slug) => ({ slug }));
 }
 
@@ -29,6 +31,8 @@ export async function generateMetadata({
 }
 
 export default async function WritingPostPage({ params }: PageProps) {
+  if (!writingEnabled) notFound();
+
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 

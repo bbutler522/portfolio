@@ -14,7 +14,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Content
 
 - **Projects:** `content/projects/*.mdx`
-- **Writing:** `content/posts/*.mdx`
+- **Writing:** `content/posts/*.mdx` (hidden — set `writingEnabled` to `true` in `src/lib/site-config.ts` to show)
 - **Site copy:** `content/site/home.md`, `content/site/about.md`
 
 Edit markdown files and refresh — no CMS required.
